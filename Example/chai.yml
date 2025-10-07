@@ -1,0 +1,115 @@
+chai_type: masala_chai #inline comment
+temperature: hot
+servings: 2
+brewing_time: 5
+
+#indentations in yaml / we use 2*space for ex
+
+chai_recipe:
+  base: black_tea
+  milk: whole_milk
+
+chai_recipe_two:
+  base: black_tea
+  milk: whole_milk
+
+#string
+chai_name: masala chai
+description: "chai with cardemom, ginger"
+tagline: 'the best chai in town'
+
+brewing_instrucction: |
+  boil water
+  add tea leaves
+  add milk
+
+brewing_instrucction_two: >
+  boil water
+  add tea leaves
+  add milk
+
+#number
+cups_per_day: 3
+cups_per_day_two: 0xFF22FF
+
+#booleon
+is_hot: true
+add_sugar: yes
+add_salt: no
+instant: on
+
+#null
+sweetner: null
+alternative_milk: ~
+
+#Timestam
+morning_brew: 2025-08-07
+lacal_time: 2025-08-07 08:30:01
+
+#Collections we use to list using(-)
+spices:
+  - ginger
+  - cloves
+  - black_pepper
+  - true
+  - 200
+
+# spices: [cardemom,ginger,cloves]                      old format for list
+steeping_times: [3,2,1]
+
+#Nested list
+chai_categories:
+  - name: Traditional
+    varities:
+    - Masala chai
+    - Ginger chai
+  - name: Modern
+    varities:
+    - Vanilla chai
+    - Rose chai
+    - Chocolate chai
+
+masala_chai:
+  ingredients: 
+    tea: black_tea
+    liquid: 
+      water: 200ml
+      milk: 100ml
+    spices:
+      ginger: 1_inch
+      cinnamon: 1_stick
+  prepration:
+    method: simmer
+    duration: 6_minutes
+
+# list dictionaries
+chai_menu: 
+  - name: Masala chai
+    price: 30
+    size: regular 
+
+  - name: Ginger chai
+    price: 30
+    size: regular
+
+# DRY(Dont Reapeat Yourself)
+# example : reference
+default_chai_base: &default_base  #known as  "Ancher"||"Alieses" isko refer krne k liye (<<)
+  tea: black_tea
+  water: 200ml
+  brewing_time: 5
+
+morining_chai: 
+  <<: *default_base
+  milk: 100ml
+evening_chai: 
+  <<: *default_base
+  milk: 150ml
+# when we want value in string we use (!!str)
+zip_code: !!str 123456
+count: !!int "123"
+
+unique_spices: !!set
+  ? Gardemom
+  ? Ginger
+  ? Cloves
